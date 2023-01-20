@@ -1,0 +1,29 @@
+{{!-- HEAD --}}
+  <title>Cadastro</title>
+  <script type="module" src="/js/teste.js"></script>
+{{!-- BODY --}}
+<body>
+  <div class="flex-container">
+    <div>
+        <div class="title">
+          <h1>Cadastrar Cliente</h1>
+        </div>
+       <form action="/cadastrar" method="POST" >
+      <div class="flex-camp">
+          <input type="text" class="input" id="nome" name="nome" placeholder="Nome" required>
+          <input type="number" class="input" id="telefone" name="telefone" placeholder="Telefone" required>
+          <input type="number" class="input" id="cep" name="cep" placeholder="CEP" required>
+
+          <input type="text" class="input" id="rua" name="rua" placeholder="Rua" required>
+          <input type="text" class="input" id="numero" name="numero" placeholder="Número" required>
+          <input type="text" class="input" id="bairro" name="bairro" placeholder="Bairro" required>
+          <input type="text" class="input" id="cidade" name="cidade" placeholder="Cidade" required>
+          <input type="text" class="input" id="uf" name="uf" placeholder="UF" required>
+
+          <button class="flex-camp button" type="submit">CADASTAR</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</body>
+

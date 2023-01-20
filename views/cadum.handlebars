@@ -1,0 +1,20 @@
+{{!-- HEADER --}}
+{{#each dados}}
+  <title>{{IdUsuario}} - {{nome}}</title>
+{{/each}}
+{{!-- BODY --}}
+<div class="flex-container">
+  <div class="flex-header">
+    {{#each dados}}
+      <input type="text" value="{{IdUsuario}}" disabled>
+      <input type="text" value="{{nome}}" disabled>
+      <input type="text" value="{{telefone}}" disabled>
+      <input type="text" value="{{cep}}" disabled>
+      <input type="text" value="{{rua}}" disabled>
+      <input type="text" value="{{numero}}" disabled>
+      <input type="text" value="{{bairro}}" disabled>
+      <input type="text" value="{{cidade}}" disabled>
+      <input type="text" value="{{uf}}" disabled>
+    {{/each}}
+  </div>
+</div>
