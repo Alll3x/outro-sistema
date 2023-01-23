@@ -3,18 +3,20 @@
   <title>{{IdUsuario}} - {{nome}}</title>
 {{/each}}
 {{!-- BODY --}}
-<div class="flex-container">
+<div class="flex-container user-client">
   <div class="flex-header">
     {{#each dados}}
-      <input type="text" value="{{IdUsuario}}" disabled>
-      <input type="text" value="{{nome}}" disabled>
-      <input type="text" value="{{telefone}}" disabled>
-      <input type="text" value="{{cep}}" disabled>
-      <input type="text" value="{{rua}}" disabled>
-      <input type="text" value="{{numero}}" disabled>
-      <input type="text" value="{{bairro}}" disabled>
-      <input type="text" value="{{cidade}}" disabled>
-      <input type="text" value="{{uf}}" disabled>
+    <section class="section-client">
+      <label class="font">Cod. Cliente:</label>
+        <input type="text" class="font codCliente" value="{{IdUsuario}}" disabled>
+      <label class="font">Nome:</label>
+        <input type="text" class="font" value="{{nome}}" disabled>
+      <label class="font">Telefone:</label>
+        <input type="text" class="font telfone" value="{{telefone}}" disabled>
+      <label class="font">Endereço:</label>
+        <input type="text" class="font endereco" value="R. {{rua}} - {{numero}} | {{bairro}} | {{cidade}} - {{uf}} | {{cep}}" disabled>
+        <hr>
+    </section>
     {{/each}}
   </div>
 </div>

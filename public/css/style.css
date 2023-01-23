@@ -16,6 +16,8 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  /* border: 2px solid red; */
 }
 
 .title{
@@ -126,4 +128,42 @@ th{
 td{
   text-align: center;
   border: solid black 2px;
+}
+
+.user-client{
+  margin-top: 5vh;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-header{
+  border: 2px solid orange;
+  height: 8vh;
+  width: 85%;
+}
+
+.font{
+  font-size: 2vh;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.codCliente{
+  width: 3.5vh;
+}
+
+.telfone{
+  width: 13vh;
+}
+
+.section-client{
+padding: 5px;
+}
+
+.section-address{
+padding: 5px;
+}
+
+.endereco{
+  width: 60vh;
 }

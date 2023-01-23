@@ -73,7 +73,7 @@
         telefone: req.body.telefone,
         idEndereco: newAddress.id
       }).then(()=>{
-          return res.status(200).redirect('/')
+          return res.status(200).redirect('/usuariosCadastrados')
       }).catch((err)=>{
         return res.status(400).json({
           erro: true,
