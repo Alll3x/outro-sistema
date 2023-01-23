@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('./db')
 
- const Address = db.define("address", {
+ const Address = db.define("addresses", {
   id:{
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -34,9 +34,9 @@ const db = require('./db')
   }
  })
 
- //se não existir criar a tabela
- // User.sync()
- //recriar tabela
-//  Address.sync({force: true})
+//se não existir criar a tabela
+ // Address.sync()
+//recriar tabela
+  //  Address.sync({force: true})
 
  module.exports = Address

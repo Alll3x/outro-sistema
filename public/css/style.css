@@ -137,8 +137,9 @@ td{
 }
 
 .flex-header{
-  border: 2px solid orange;
-  height: 8vh;
+  border: 2px solid #000;
+  border-radius: 10px;
+  height: 10vh;
   width: 85%;
 }
 
@@ -166,4 +167,19 @@ padding: 5px;
 
 .endereco{
   width: 60vh;
+}
+
+.user-page-menu{
+  padding: 0px 5px 0px;
+}
+
+.user-page-menu button{
+  border-radius: 5px;
+  width: 10vh;
+  height: 3vh;
+  cursor: pointer;
+}
+
+.user-page-menu button:hover{
+  background-color: #bfc2db;
 }

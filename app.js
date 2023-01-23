@@ -10,6 +10,7 @@
 //MODELS
   const User = require('./models/User')
   const Address = require('./models/Address')
+  const Vehicle = require('./models/Vehicle')
 
 //DATABASE
   const db = require('./models/db')
@@ -56,6 +57,12 @@
     const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
     console.log(result[0]);
     res.render('cadum', { dados:result[0] })
+  })
+
+  // PAGINA CADASTRAR VEICULO NO USUARIO
+  app.get('/cadastrarVeiculo/:id', async(req, res) =>{
+    res.render('cadastroVeiculos')
+
   })
 
   //CADASTRAR EM BANCO
