@@ -1,29 +1,51 @@
 {{!-- HEAD --}}
-  <title>Veículos</title>
-  <script type="module" src="/js/teste.js"></script>
+{{#each dados}}
+  <title>Veículos {{nome}}</title>
+{{/each}}
+  
 {{!-- BODY --}}
 <body>
-  <div class="flex-container">
+  <div class="flex-container cadastro-veiculos">
     <div>
         <div class="title">
-          <h1>Cadastrar Cliente</h1>
+          <h1>Cadastrar Veículo</h1>
         </div>
-       <form action="/cadastrarVeiculos" method="POST" >
+  {{#each dados}}
+       <form action="/cadastrarVeiculos/{{IdUsuario}}" method="POST" >
+  {{/each}}
       <div class="flex-camp">
-          <input type="text" class="input" id="nome" name="nome" placeholder="Nome" required>
-          <input type="number" class="input" id="telefone" name="telefone" placeholder="Telefone" required>
-          <input type="number" class="input" id="cep" name="cep" placeholder="CEP" required>
-
-          <input type="text" class="input" id="rua" name="rua" placeholder="Rua" required>
-          <input type="text" class="input" id="numero" name="numero" placeholder="Número" required>
-          <input type="text" class="input" id="bairro" name="bairro" placeholder="Bairro" required>
-          <input type="text" class="input" id="cidade" name="cidade" placeholder="Cidade" required>
-          <input type="text" class="input" id="uf" name="uf" placeholder="UF" required>
-
+          <input type="text" class="input" id="marca" name="marca" placeholder="Marca" required>
+          <input type="text" class="input" id="modelo" name="modelo" placeholder="Modelo" required>
+          <input type="number" class="input" id="ano" name="ano" placeholder="Ano" required>
+          <input type="text" class="input" id="placa" name="placa" placeholder="Placa" required>
+          <textarea id="anotacoes" name="anotacoes" placeholder="Anotações sobre o veiculo" cols="30" rows="5"></textarea>
           <button class="flex-camp button" type="submit">CADASTAR</button>
       </div>
     </form>
     </div>
+      <div class="veiculos-cadastrados">
+  {{#each dados}}
+       <h3>Veículos de {{nome}}</h3>
+  {{/each}} 
+    <table>
+      <tr>
+        <td>Cod. Veiculo</td>
+        <td>Marca</td>
+        <td>Modelo</td>
+        <td>Ano</td>
+        <td>Placa</td>
+      </tr>
+  {{#each vehicles}}
+      <tr>
+        <td>{{idVeiculo}}</td> 
+        <td>{{marca}}</td> 
+        <td>{{modelo}}</td> 
+        <td>{{ano}}</td> 
+        <td>{{placa}}</td> 
+      </tr>
+  {{/each}} 
+    </table>
+  </div>
   </div>
 </body>
 
