@@ -3,30 +3,31 @@
   <title>{{IdUsuario}} - {{nome}}</title>
 {{/each}}
 {{!-- BODY --}}
-<div class="flex-container user-client">
-  <div class="flex-header">
-    <section class="section-client"> 
-  {{#each dados}}
-      <label class="font">Cod. Cliente:</label>
-        <input type="text" class="font codCliente" value="{{IdUsuario}}" disabled>
-      <label class="font">Nome:</label>
-        <input type="text" class="font" value="{{nome}}" disabled>
-      <label class="font">Telefone:</label>
-        <input type="text" class="font telfone" value="{{telefone}}" disabled>
-      <label class="font">Endereço:</label>
-        <input type="text" class="font endereco" value="R. {{rua}} - {{numero}} | {{bairro}} | {{cidade}} - {{uf}} | {{cep}}" disabled>
-  {{/each}}
-  <hr> 
-    </section>
-<section class="user-page-menu">
-  <a href="#"><button>+ FICHA</button></a>
-  <a href="#"><button>EDITAR</button></a>
-  {{#each dados}}
-     <a href="/cadastrarVeiculo/{{IdUsuario}}"><button>VEÍCULOS</button></a>
-  {{/each}}
-</section>
-  </div>
-  <div class="flex-body">
+  <div class="flex-container user-client">
+    <div class="flex-header">
+      <section class="section-client"> 
+    {{#each dados}}
+        <label class="font">Cod. Cliente:</label>
+          <input type="text" class="font codCliente" value="{{IdUsuario}}" disabled>
+        <label class="font">Nome:</label>
+          <input type="text" class="font" value="{{nome}}" disabled>
+        <label class="font">Telefone:</label>
+          <input type="text" class="font telfone" value="{{telefone}}" disabled>
+        <label class="font">Endereço:</label>
+          <input type="text" class="font endereco" value="R. {{rua}} - {{numero}} | {{bairro}} | {{cidade}} - {{uf}} | {{cep}}" disabled>
+    {{/each}}
+    <hr> 
+      </section>
+  <section class="user-page-menu">
+    <a href="#"><button>+ FICHA</button></a>
+{{#each dados}}
+      <a href="/cadastrarVeiculo/{{IdUsuario}}"><button>VEÍCULOS</button></a>
+{{/each}}
+    <a href="#"><button style="background-color: red;"> <s>EDITAR</s> </button></a>
+    
+  </section>
+    </div>
+    <div class="flex-body">
 
+    </div>
   </div>
-</div>

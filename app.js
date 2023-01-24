@@ -55,7 +55,6 @@
   //PAGINA ESPECIFICA DE CADA CLIENTE
   app.get('/cadum/:id', async(req, res) =>{
     const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
-    console.log(result[0]);
     res.render('cadum', { dados:result[0] })
   })
 
