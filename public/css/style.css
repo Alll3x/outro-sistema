@@ -17,7 +17,7 @@ body{
   justify-content: center;
   align-items: center;
 
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 .title{
@@ -186,4 +186,21 @@ padding: 5px;
 
 .cadastro-veiculos{
   justify-content: flex-start;
+}
+
+.cod-veiculo{
+  width: 10vh;
+}
+
+.ano{
+  width: 5vh;
+}
+
+.placa{
+  width: 8vh;
+}
+
+.title-vehicles{
+  font-size: 30px;
+  text-align: center;
 }

@@ -1,8 +1,7 @@
 {{!-- HEAD --}}
-{{#each dados}}
-  <title>Veículos {{nome}}</title>
-{{/each}}
-  
+  {{#each dados}}
+    <title>Veículos {{nome}}</title>
+  {{/each}}
 {{!-- BODY --}}
 <body>
   <div class="flex-container cadastro-veiculos">
@@ -25,15 +24,15 @@
     </div>
       <div class="veiculos-cadastrados">
   {{#each dados}}
-       <h3>Veículos de {{nome}}</h3>
+       <h3 class="title-vehicles">Veículos de {{nome}}</h3>
   {{/each}} 
     <table>
       <tr>
-        <td>Cod. Veiculo</td>
-        <td>Marca</td>
-        <td>Modelo</td>
-        <td>Ano</td>
-        <td>Placa</td>
+        <td class="cod-veiculo">Cod. Veiculo</td>
+        <td class="cod-veiculo">Marca</td>
+        <td class="cod-veiculo">Modelo</td>
+        <td class="ano">Ano</td>
+        <td class="placa">Placa</td>
       </tr>
   {{#each vehicles}}
       <tr>
