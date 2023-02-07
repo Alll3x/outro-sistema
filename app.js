@@ -11,6 +11,9 @@
   const User = require('./models/User')
   const Address = require('./models/Address')
   const Vehicle = require('./models/Vehicle')
+  const Item = require('./models/Item')
+  const Ticket = require('./models/Ticket')
+  const ItemTicket = require('./models/ItemTicket')
 
 //DATABASE
   const db = require('./models/db')
@@ -47,28 +50,35 @@
 })
 
   //EXIBIR LISTA DE USUÁRIOS CADASTRADOS
-  app.get('/usuariosCadastrados', async(req, res) =>{
+  app.get('/usuariosCadastrados', async(req, res)=>{
     const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS())
     res.render('usuariosCadastrados', { dados:result[0] })
   })
 
   //PAGINA ESPECIFICA DE CADA CLIENTE
-  app.get('/cadum/:id', async(req, res) =>{
+  app.get('/cadum/:id', async(req, res)=>{
     const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
     res.render('cadum', { dados:result[0] })
   })
 
   // PAGINA CADASTRAR VEICULO NO USUARIO
-  app.get('/cadastrarVeiculo/:id', async(req, res) =>{
+  app.get('/cadastrarVeiculo/:id', async(req, res)=>{
     const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
     const vehicle = await db.query(myQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
     res.render('cadastroVeiculos', { dados:result[0], vehicles: vehicle[0] })
 
   })
 
+  //CRIAR FICHA
+  app.get('/ficha/:id', async(req,res)=>{
+    const resultUser = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
+    const resultVehicle = await db.query(myQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
+    res.render('ficha', { vehicle:resultVehicle[0], user:resultUser[0] })
+  })
+
 //CADASTRAR EM BANCO
   //USUARIO
-    app.post('/cadastrar', async(req, res) =>{
+    app.post('/cadastrar', async(req, res)=>{
         const newAddress = await Address.create({
           cep: req.body.cep,
           rua: req.body.rua,
@@ -92,7 +102,7 @@
     })
   
   //VEICULO
-    app.post('/cadastrarVeiculos/:idUser', async(req, res) =>{
+    app.post('/cadastrarVeiculos/:idUser', async(req, res)=>{
       await Vehicle.create({
         marca: req.body.marca,
         modelo: req.body.modelo,
@@ -106,6 +116,23 @@
         return res.status(400).json({
         erro: true,
         mensagem: "Veiculo não cadastrado " + err
+        })
+      })
+    })
+  
+  //CRIAR FICHA
+    app.post('/criarFicha', async(req,res)=>{
+      await Ticket.create({
+        status: req.body.status,
+        garantia: req.body.garantia,
+        idUsuario: req.body.idUsuario,
+        idVeiculo: req.body.idVeiculo
+      }).then(()=>{
+        return res.status(200).redirect(`/cadum/${req.body.idUsuario}`)
+      }).catch((err)=> {
+        return res.status(400).json({
+        erro: true,
+        mensagem: "Não foi possível criar a ficha " + err
         })
       })
     })

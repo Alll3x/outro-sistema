@@ -1,7 +1,7 @@
 {{!-- HEAD --}}
-  {{#each dados}}
-    <title>Veículos {{nome}}</title>
-  {{/each}}
+{{#each dados}}
+    <title>Veículos - {{nome}}</title>
+{{/each}}
 {{!-- BODY --}}
 <body>
   <div class="flex-container cadastro-veiculos">
@@ -9,23 +9,23 @@
         <div class="title">
           <h1>Cadastrar Veículo</h1>
         </div>
-  {{#each dados}}
+{{#each dados}}
        <form action="/cadastrarVeiculos/{{IdUsuario}}" method="POST" >
-  {{/each}}
-      <div class="flex-camp">
+{{/each}}
+        <div class="flex-camp">
           <input type="text" class="input" id="marca" name="marca" placeholder="Marca" required>
           <input type="text" class="input" id="modelo" name="modelo" placeholder="Modelo" required>
           <input type="number" class="input" id="ano" name="ano" placeholder="Ano" required>
           <input type="text" class="input" id="placa" name="placa" placeholder="Placa" required>
           <textarea id="anotacoes" name="anotacoes" placeholder="Anotações sobre o veiculo" cols="30" rows="5"></textarea>
           <button class="flex-camp button" type="submit">CADASTAR</button>
-      </div>
-    </form>
+        </div>
+      </form>
     </div>
       <div class="veiculos-cadastrados">
-  {{#each dados}}
+{{#each dados}}
        <h3 class="title-vehicles">Veículos de {{nome}}</h3>
-  {{/each}} 
+{{/each}} 
     <table>
       <tr>
         <td class="cod-veiculo">Cod. Veiculo</td>
@@ -34,7 +34,7 @@
         <td class="ano">Ano</td>
         <td class="placa">Placa</td>
       </tr>
-  {{#each vehicles}}
+{{#each vehicles}}
       <tr>
         <td>{{idVeiculo}}</td> 
         <td>{{marca}}</td> 
@@ -42,7 +42,7 @@
         <td>{{ano}}</td> 
         <td>{{placa}}</td> 
       </tr>
-  {{/each}} 
+{{/each}} 
     </table>
   </div>
   </div>

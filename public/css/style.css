@@ -24,13 +24,13 @@ body{
   font-size: 20px;
 }
 
- .flex-camp{
+.flex-camp{
   display: flex;
   justify-items: center;
   align-items: center;
   flex-direction: column;
   gap: 5px;
- }
+}
 
 .input{
   border-radius: 4px;

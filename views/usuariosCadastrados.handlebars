@@ -5,8 +5,8 @@
   <div class="flex-container user-table">
     <div class="data-table">
       <div class="search-area">
-        <input type="text" name="search" class="input search" placeholder="BUSCAR" required>
-        <button class="search-button"><img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" class="search-img"></button>
+        <input type="text" name="search" class="input search" placeholder="BUSCAR" disabled>
+        <button class="search-button" disabled><img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" class="search-img"></button>
       </div>
       <table class="table">
         <tr>
@@ -14,13 +14,13 @@
           <th>Nome</th>
           <th>Telefone</th>
         </tr>
-        {{#each dados}}
+{{#each dados}}
         <tr>
           <td>{{IdUsuario}}</td>
           <td><a href="/cadum/{{IdUsuario}}">{{nome}}</a></td>
           <td>{{telefone}}</td>
         </tr>
-        {{/each}}
+{{/each}}
       </table>
     </div>
   </div>

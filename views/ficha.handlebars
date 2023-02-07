@@ -1,0 +1,25 @@
+{{!-- HEAD --}}
+{{#each user}}
+  <title>ABRIR FICHA - {{nome}}</title>  
+{{/each}}
+{{!-- BODY --}}
+<body>
+  <div class="flex-container">
+    <form action="/criarFicha" method="post">
+{{#each user}}
+      <input type="text" name="idUsuario" value="{{IdUsuario}}">
+{{/each}}
+      <input type="text" name="status" value="ESPERANDO">
+      <input type="text" name="garantia" value="5 minutos">
+      
+      <select name="idVeiculo">
+        <option value="#" name="idVeiculo" >Selecione ...</option>
+{{#each vehicle}}
+        <option value="{{idVeiculo}}"> {{idVeiculo}} | {{marca}} - {{modelo}}</option>
+{{/each}}
+      </select>
+      <button type="submit">Enviar
+      </button>
+    </form>
+  </div>
+</body>
