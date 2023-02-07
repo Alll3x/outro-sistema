@@ -63,6 +63,18 @@
     )
   }
 
+  const SELECT_TICKET_BY_USERID = (id) =>{
+    return(
+    `SELECT 
+    t.id as idTicket,
+    t.status,
+    t.garantia,
+    t.idUsuario,
+    t.idVeiculo
+   FROM ofmeclara.tickets t
+   where t.idUsuario = ${id}`
+    )
+  }
 module.exports = {
   //Retorna apenas nome e telefone de todos os usuários
   SELECT_USERDATA,
@@ -70,6 +82,8 @@ module.exports = {
   SELECT_USERDATA_ADDRESS_ID,
   //Retorna todos os dados de todos os usuários
   SELECT_USERDATA_ADDRESS,
-  //Retorna todos os veículos cadastrados com base no id do usuario
+  //Retorna todos os veículos cadastrados com base no id do usuário
   SELECT_VEHICLES_BY_USERID,
+  //Retrona todas as fichas cadastradas com base no id do usuário
+  SELECT_TICKET_BY_USERID,
 }
