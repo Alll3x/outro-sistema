@@ -27,8 +27,14 @@
   </section>
     </div>
     <div class="flex-body">
+
+  <div class="flex-ticket">
 {{#each tickets}}
-  <h3>{{idTicket}} - {{status}} - {{garantia}} - {{idUsuario}}</h3>
+    <div class="tickets">
+      <p>Ficha nº: {{idTicket}}</p>
+      <p>{{marca}} - {{modelo}}</p>
+    </div>
 {{/each}}
+  </div>
     </div>
   </div>
