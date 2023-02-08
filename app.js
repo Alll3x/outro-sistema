@@ -57,8 +57,12 @@
 
   //PAGINA ESPECIFICA DE CADA CLIENTE
   app.get('/cadum/:id', async(req, res)=>{
-    const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
-    res.render('cadum', { dados:result[0] })
+    const userId = req.params.id
+      const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(userId))
+      const ticket = await db.query(myQuery.SELECT_TICKET_BY_USERID(userId))
+    const idVeiculo = (ticket[0][0].idVeiculo)
+      const vehicle = await db.query(myQuery.SELECT_VEHICLES_BY_USERID(idVeiculo))
+    res.render('cadum', { dados:result[0], tickets: ticket[0], vehicles: vehicle[0] })
   })
 
   // PAGINA CADASTRAR VEICULO NO USUARIO
