@@ -3,7 +3,6 @@
   - Cadastrar veículo do usuário
   - Criar uma ficha de manutenção 
 
-
 # Para devs
   ## Para executar em modo de desenvolvedor 
     - npm run dev
