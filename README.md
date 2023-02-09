@@ -1,4 +1,4 @@
-# Sistema básico com as funcionalidades
+# Funcionalidades
   - Cadastrar usuário com endereço
   - Cadastrar veículo do usuário
   - Criar uma ficha de manutenção 
