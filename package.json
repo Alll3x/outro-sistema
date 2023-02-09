@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "npx nodemon app.js"
+    "dev": "npx nodemon app.js",
+    "commit": "git add . && git commit -m 'anything' && git push origin master"
   },
   "author": "",
   "license": "ISC",
