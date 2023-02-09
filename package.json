@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "npx nodemon app.js",
-    "commit": "git add . && git commit -m 'autoCommit' && git push origin master && clear"
+    "commit": "git add . && git commit -m 'autoCommit' && git push origin master"
   },
   "author": "",
   "license": "ISC",
