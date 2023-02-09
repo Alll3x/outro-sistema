@@ -5,8 +5,11 @@
 
 
 # Para devs
-## Para executar em modo de desenvolvedor 
-  - npm run dev
+  ## Para executar em modo de desenvolvedor 
+    - npm run dev
+  ## Para auto commit 
+    - npm run commit 
+
 ## Técnologias utilizadas
  ### V1
   - Express
