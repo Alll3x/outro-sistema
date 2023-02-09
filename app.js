@@ -60,9 +60,10 @@
     const userId = req.params.id
       const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(userId))
       const ticket = await db.query(myQuery.SELECT_TICKET_BY_USERID(userId))
-    const idVeiculo = (ticket[0][0].idVeiculo)
+    const idVeiculo = ticket[0][0]?.idVeiculo || null
       const vehicle = await db.query(myQuery.SELECT_VEHICLES_BY_USERID(idVeiculo))
     res.render('cadum', { dados:result[0], tickets: ticket[0], vehicles: vehicle[0] })
+      
   })
 
   // PAGINA CADASTRAR VEICULO NO USUARIO
@@ -77,7 +78,7 @@
   app.get('/ficha/:id', async(req,res)=>{
     const resultUser = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
     const resultVehicle = await db.query(myQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
-    res.render('ficha', { vehicle:resultVehicle[0], user:resultUser[0] })
+    res.render('criarFicha', { vehicle:resultVehicle[0], user:resultUser[0] })
   })
 
 //CADASTRAR EM BANCO

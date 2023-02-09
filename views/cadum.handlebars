@@ -26,15 +26,17 @@
     <a href="#"><button disabled>EDITAR</button></a>
   </section>
     </div>
-    <div class="flex-body">
-
-  <div class="flex-ticket">
+      <div class="flex-body">
+        <div class="flex-ticket">
 {{#each tickets}}
-    <div class="tickets">
-      <p>Ficha nº: {{idTicket}}</p>
-      <p>{{marca}} - {{modelo}}</p>
-    </div>
+          <div class="tickets">
+            <p>Ficha nº: {{idTicket}}</p>
+            <p>{{marca}} - {{modelo}}</p>
+            <p>{{status}}</p>
+            <a href="#"><button>ABRIR</button></a>
+            <a href="#"><button>EXCLUIR</button></a>
+          </div>
 {{/each}}
-  </div>
+        </div>
+      </div>
     </div>
-  </div>
