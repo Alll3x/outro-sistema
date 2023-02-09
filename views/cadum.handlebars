@@ -29,13 +29,7 @@
       <div class="flex-body">
         <div class="flex-ticket">
 {{#each tickets}}
-          <div class="tickets">
-            <p>Ficha nº: {{idTicket}}</p>
-            <p>{{marca}} - {{modelo}}</p>
-            <p>{{status}}</p>
-            <a href="#"><button>ABRIR</button></a>
-            <a href="#"><button>EXCLUIR</button></a>
-          </div>
+          {{>ticketCard}}
 {{/each}}
         </div>
       </div>
