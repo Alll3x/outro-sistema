@@ -14,7 +14,7 @@
    ### Para atualizar 
      -npm run atualizar 
   
-## Técnologias utilizadas
+## Tecnologias utilizadas
  ### V1
   - Express
   - HandleBars
@@ -22,6 +22,6 @@
 ## Banco de dados 
   - SQL
 
-## Técnologias a serem implementadas:
+## Tecnologias a serem implementadas:
   - DOTENV
   - Migrations
