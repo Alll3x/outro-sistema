@@ -1,6 +1,6 @@
 # Funcionalidades
   - Cadastrar usuário com endereço
-  - Cadastrar veículo do usuário
+  - Cadastrar item do usuário
   - Criar uma ficha de manutenção 
 
 # Para devs
