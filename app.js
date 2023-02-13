@@ -5,7 +5,8 @@
   const path = require('path')
 
 //SQL QUERIES
-  const myQuery = require('./sql/userQueries')
+  const userQuery = require('./sql/userQueries')
+  const ticketQuery = require('./sql/ticketQueries')
 
 //MODELS
   const User = require('./models/User')
@@ -51,34 +52,40 @@
 
   //EXIBIR LISTA DE USUÁRIOS CADASTRADOS
   app.get('/usuariosCadastrados', async(req, res)=>{
-    const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS())
+    const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS())
     res.render('usuariosCadastrados', { dados:result[0] })
   })
 
   //PAGINA ESPECIFICA DE CADA CLIENTE
   app.get('/cadum/:id', async(req, res)=>{
     const userId = req.params.id
-      const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(userId))
-      const ticket = await db.query(myQuery.SELECT_TICKET_BY_USERID(userId))
+      const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(userId))
+      const ticket = await db.query(userQuery.SELECT_TICKET_BY_USERID(userId))
     const idVeiculo = ticket[0][0]?.idVeiculo || null
-      const vehicle = await db.query(myQuery.SELECT_VEHICLES_BY_USERID(idVeiculo))
+      const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(idVeiculo))
     res.render('cadum', { dados:result[0], tickets: ticket[0], vehicles: vehicle[0] })
       
   })
 
   // PAGINA CADASTRAR VEICULO NO USUARIO
   app.get('/cadastrarVeiculo/:id', async(req, res)=>{
-    const result = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
-    const vehicle = await db.query(myQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
+    const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
+    const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
     res.render('cadastroVeiculos', { dados:result[0], vehicles: vehicle[0] })
 
   })
 
   //CRIAR FICHA
-  app.get('/ficha/:id', async(req,res)=>{
-    const resultUser = await db.query(myQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
-    const resultVehicle = await db.query(myQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
+  app.get('/criarFicha/:id', async(req,res)=>{
+    const resultUser = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
+    const resultVehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
     res.render('criarFicha', { vehicle:resultVehicle[0], user:resultUser[0] })
+  })
+
+  //Ficha
+  app.get('/ficha/:id', async(req, res)=>{
+    const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID(req.params.id))
+    res.render('ticket', { ticket: ticketResult[0] })
   })
 
 //CADASTRAR EM BANCO
