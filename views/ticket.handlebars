@@ -5,5 +5,35 @@
 
 {{!-- BODY --}}
 <body>
-  
+   <div class="flex-container user-client">
+    <div class="flex-header">
+      <section class="section-client"> 
+{{#each ticket}}
+        <label class="font">Cod. Cliente:</label>
+          <input type="text" class="font codCliente" value="{{idVeiculo}}" disabled>
+        <label class="font">Nome:</label>
+          <input type="text" class="font" value="{{nome}}" disabled>
+        <label class="font">Telefone:</label>
+          <input type="text" class="font telfone" value="{{telefone}}" disabled>
+        <label class="font">Endereço:</label>
+          <input type="text" class="font endereco" value="R. {{rua}} - {{numero}} | {{bairro}} | {{cidade}} - {{uf}} | {{cep}}" disabled>
+        <hr> 
+        <label class="font">Veículo:</label>
+          <input type="text" class="font" value="{{marca}} {{modelo}}" disabled>
+        <label class="font">Ano:</label>
+          <input type="text" class="font" value="{{ano}}" disabled>
+        <label class="font">Placa:</label>
+          <input type="text" class="font" value="{{placa}}" disabled>
+         <label class="font">Status:</label>
+          <input type="text" class="font" value="{{status}}" disabled>
+        <label class="font">Entrada:</label>
+          <input type="text" class="font" value="{{createdAt}}" disabled>
+       
+{{/each}}
+      </section>
+    </div>
+  <section class="flex-ticket">
+
+  </section>
+  </div>
 </body>

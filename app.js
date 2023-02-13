@@ -84,7 +84,7 @@
 
   //Ficha
   app.get('/ficha/:id', async(req, res)=>{
-    const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID(req.params.id))
+    const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(req.params.id))
     res.render('ticket', { ticket: ticketResult[0] })
   })
 
