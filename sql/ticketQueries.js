@@ -15,7 +15,41 @@ const SELECT_TICKET_BY_ID = (id) => {
   )
 }
 
+const SELECT_TICKET_BY_ID_WITH_USER_AND_CAR = (id) => {
+  return (
+    `
+  SELECT
+    t.id AS idTicket,
+      t.status,
+      t.garantia,
+      DATE_FORMAT(t.createdAt, '%d-%m-%Y') AS createdAt,
+    u.id AS idUsuario,
+      u.nome,
+      u.telefone,
+    v.id AS idVeiculo,
+      v.marca,
+      v.modelo,
+      v.ano,
+      v.placa
+  FROM
+    ofmeclara.tickets t
+  JOIN
+    ofmeclara.users u
+  ON
+    t.idUsuario = u.id
+  JOIN
+    ofmeclara.vehicles v
+  ON
+    t.idVeiculo = v.id
+  WHERE
+    t.id = ${id}
+    `
+  )
+}
+
 module.exports = {
   // RETORNA TODAS AS INFORMAÇÕES DO TICKET COM BASE NO ID DELE
     SELECT_TICKET_BY_ID,
+  // RETORNA TODAS AS INFORMAÇÕES COM BASE NO ID DELE
+    SELECT_TICKET_BY_ID_WITH_USER_AND_CAR
 }
