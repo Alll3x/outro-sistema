@@ -4,13 +4,16 @@
   - Criar uma ficha de manutenção 
 
 # Para devs
-  ## Para executar em modo de desenvolvedor 
+##Comandos
+  ### Para executar em modo de desenvolvedor 
     - npm run dev
-  ## Para auto commit 
+  ### Para auto commit 
     - npm run commit 
-  ## Para auto commit e autoplay
+  ### Para auto commit e autoplay
     - npm run commitplay
-
+  ### Para atualizar 
+    -npm run atualizar 
+  
 ## Técnologias utilizadas
  ### V1
   - Express
