@@ -59,9 +59,32 @@ const SELECT_TICKET_BY_ID_WITH_USER_AND_CAR = (id) => {
   )
 }
 
+const SELECT_ITEMSTICKET_BY_TICKETID = (id) =>{
+  return(  
+    `
+  SELECT
+	  it.id AS idItemTicket,
+      it.valorUn,
+      it.quantidade,
+      DATE_FORMAT(it.createdAt, '%d-%m-%Y') AS createdAt,
+    i.id As IdItem,
+		  i.nome
+  FROM
+	  ofmeclara.itemtickets it
+  JOIN 
+	  ofmeclara.items i
+  ON
+	  i.id = it.idItem
+  where
+	  it.idTicket = ${id}
+    `
+  )
+}
 module.exports = {
   // RETORNA TODAS AS INFORMAÇÕES DO TICKET COM BASE NO ID DELE
     SELECT_TICKET_BY_ID, 
   // RETORNA TODAS AS INFORMAÇÕES COM BASE NO ID DELE
-    SELECT_TICKET_BY_ID_WITH_USER_AND_CAR
+    SELECT_TICKET_BY_ID_WITH_USER_AND_CAR,
+  //RETORNA TODAS OS ITEM DO TICKET
+    SELECT_ITEMSTICKET_BY_TICKETID,
 } 

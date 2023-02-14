@@ -30,7 +30,7 @@
       allowProtoPropertiesByDefault: true,
       allowProtoMethodsByDefault: true,
     }}))
-    app.set('view engine', 'handlebars')
+    app.set('view engine', 'handlebars') 
 
   //BODY-PARSER
     app.use(bodyParser.urlencoded({extended:false}))
@@ -84,8 +84,10 @@
 
   //Ficha
   app.get('/ficha/:id', async(req, res)=>{
-    const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(req.params.id))
-    res.render('ticket', { ticket: ticketResult[0] })
+    const ticketId = req.params.id
+    const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(ticketId))
+    const itemsTicket = await db.query(ticketQuery.SELECT_ITEMSTICKET_BY_TICKETID(ticketId))
+    res.render('ticket', { ticket: ticketResult[0], items: itemsTicket[0]  })
   })
 
 //CADASTRAR EM BANCO

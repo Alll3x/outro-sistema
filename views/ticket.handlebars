@@ -33,7 +33,30 @@
       </section>
     </div>
   <section class="flex-ticket">
-
+    <div class="data-table">
+      <table class="table">
+        <tr>
+          <td>Cod. Peça</td>
+          <td>Quantidade</td>
+          <td>Peça/Serviço</td>
+          <td>Valor Unitário</td>
+          <td>Data da Compra</td>
+        </tr>
+{{#each items}}
+        <tr>
+          <td>{{idItemTicket}}</td>
+          <td>{{quantidade}}</td>
+          <td>{{nome}}</td>
+          <td>{{valorUn}}</td>
+          <td>{{createdAt}}</td>
+        </tr>
+{{/each}}
+        <td>Valor Total: R$</td>
+{{#each ticket}}
+       <td>Garantia: {{garantia}}</td>
+{{/each}}
+      </table>
+    </div>
   </section>
   </div>
 </body>
