@@ -90,7 +90,7 @@
     res.render('ticket', { ticket: ticketResult[0], items: itemsTicket[0]  })
   })
 
-//CADASTRAR EM BANCO
+//BANCO DE DADOS
   //USUARIO
     app.post('/cadastrar', async(req, res)=>{
         const newAddress = await Address.create({
@@ -150,15 +150,32 @@
         })
       })
     })
+  
+  //Adicionar peça na lista
+    app.post('/addPeca/:idTicket', async(req,res)=>{
+      const item = await Item.create({
+        nome: req.body.nome
+      })
+      await ItemTicket.create({
+        valorUn: req.body.valorUn,
+        quantidade: req.body.quantidade,
+        idTicket: req.params.idTicket,
+        idItem: item.id
+      }).then(()=>{
+        res.status(200).redirect(`/ficha/${req.params.idTicket}`)
+      }).catch((err)=>{
+        res.status(404).send(`Erro ao cadastrar item ${err}`)
+      })
+    })
 
   //deletar cadastro
-  app.get('/deletar/:id', async(req, res)=>{
-    User.destroy({where:{'id': req.params.id}}).then(()=>{
-      res.redirect('/')
-    }).catch((err)=>{
-      res.send('Este cadastro não existe !')
-    })
-  })
+  // app.get('/deletar/:id', async(req, res)=>{
+  //   User.destroy({where:{'id': req.params.id}}).then(()=>{
+  //     res.redirect('/')
+  //   }).catch((err)=>{
+  //     res.send('Este cadastro não existe !')
+  //   })
+  // })
 
 //SERVIDOR
   app.listen(8080,()=>{ 
