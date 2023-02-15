@@ -21,9 +21,12 @@
   - Express
   - HandleBars
   - Sequelize 
+  - Node
+  - BodyParser
 ## Banco de dados 
   - SQL
 
 ## Tecnologias a serem implementadas:
   - DOTENV
   - Migrations
+  - Gerar PDF
