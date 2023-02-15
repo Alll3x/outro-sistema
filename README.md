@@ -1,7 +1,9 @@
 # Funcionalidades
-  - Cadastrar usuário com endereço
-  - Cadastrar item do usuário
-  - Criar uma ficha de manutenção 
+  - Cadastrar usuário com endereço;
+  - Cadastrar item do usuário;
+  - Criar uma ficha de manutenção;
+  - Adicionar itens a ficha;
+  - Calcula automáticamente o valor final;
 
 # Para devs
   ## Comandos
