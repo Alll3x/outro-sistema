@@ -92,84 +92,89 @@
   })
 
 //BANCO DE DADOS
-  //USUARIO
-    app.post('/cadastrar', async(req, res)=>{
-        const newAddress = await Address.create({
-          cep: req.body.cep,
-          rua: req.body.rua,
-          numero: req.body.numero,
-          bairro: req.body.bairro,
-          cidade: req.body.cidade,
-          uf: req.body.uf
-        })
-        await User.create({
-          nome: req.body.nome,
-          telefone: req.body.telefone,
-          idEndereco: newAddress.id
+  // POST
+    //USUARIO
+      app.post('/cadastrar', async(req, res)=>{
+          const newAddress = await Address.create({
+            cep: req.body.cep,
+            rua: req.body.rua,
+            numero: req.body.numero,
+            bairro: req.body.bairro,
+            cidade: req.body.cidade,
+            uf: req.body.uf
+          })
+          await User.create({
+            nome: req.body.nome,
+            telefone: req.body.telefone,
+            idEndereco: newAddress.id
+          }).then(()=>{
+              return res.status(200).redirect('/usuariosCadastrados')
+          }).catch((err)=>{
+            return res.status(400).json({
+              erro: true,
+              mensagem: "Usuário não cadastrado " + err
+            })
+          })
+      })
+    
+    //VEICULO
+      app.post('/cadastrarVeiculos/:idUser', async(req, res)=>{
+        await Vehicle.create({
+          marca: req.body.marca,
+          modelo: req.body.modelo,
+          ano: req.body.ano,
+          placa: req.body.placa,
+          anotacoes: req.body.anotacoes,
+          idUsuario: req.params.idUser
         }).then(()=>{
-            return res.status(200).redirect('/usuariosCadastrados')
-        }).catch((err)=>{
+          return res.status(200).redirect(`/cadum/${req.params.idUser}`)
+        }).catch((err)=> {
           return res.status(400).json({
-            erro: true,
-            mensagem: "Usuário não cadastrado " + err
+          erro: true,
+          mensagem: "Veiculo não cadastrado " + err
           })
         })
-    })
-  
-  //VEICULO
-    app.post('/cadastrarVeiculos/:idUser', async(req, res)=>{
-      await Vehicle.create({
-        marca: req.body.marca,
-        modelo: req.body.modelo,
-        ano: req.body.ano,
-        placa: req.body.placa,
-        anotacoes: req.body.anotacoes,
-        idUsuario: req.params.idUser
-      }).then(()=>{
-        return res.status(200).redirect(`/cadum/${req.params.idUser}`)
-      }).catch((err)=> {
-        return res.status(400).json({
-        erro: true,
-        mensagem: "Veiculo não cadastrado " + err
+      })
+    
+    //CRIAR FICHA
+      app.post('/criarFicha', async(req,res)=>{
+        await Ticket.create({
+          status: req.body.status,
+          garantia: req.body.garantia,
+          idUsuario: req.body.idUsuario,
+          idVeiculo: req.body.idVeiculo
+        }).then(()=>{
+          return res.status(200).redirect(`/cadum/${req.body.idUsuario}`)
+        }).catch((err)=> {
+          return res.status(400).json({
+          erro: true,
+          mensagem: "Não foi possível criar a ficha " + err
+          })
         })
       })
-    })
-  
-  //CRIAR FICHA
-    app.post('/criarFicha', async(req,res)=>{
-      await Ticket.create({
-        status: req.body.status,
-        garantia: req.body.garantia,
-        idUsuario: req.body.idUsuario,
-        idVeiculo: req.body.idVeiculo
-      }).then(()=>{
-        return res.status(200).redirect(`/cadum/${req.body.idUsuario}`)
-      }).catch((err)=> {
-        return res.status(400).json({
-        erro: true,
-        mensagem: "Não foi possível criar a ficha " + err
+    
+    //Adicionar peça na lista
+      app.post('/addPeca/:idTicket', async(req,res)=>{
+        const totalItem = await req.body.valorUn * req.body.quantidade
+        const item = await Item.create({
+          nome: req.body.nome
+        })
+        await ItemTicket.create({
+          valorUn: req.body.valorUn,
+          quantidade: req.body.quantidade,
+          valorTot: totalItem,
+          idTicket: req.params.idTicket,
+          idItem: item.id
+        }).then(()=>{
+          res.status(200).redirect(`/ficha/${req.params.idTicket}`)
+        }).catch((err)=>{
+          res.status(404).send(`Erro ao cadastrar item ${err}`)
         })
       })
-    })
-  
-  //Adicionar peça na lista
-    app.post('/addPeca/:idTicket', async(req,res)=>{
-      const totalItem = await req.body.valorUn * req.body.quantidade
-      const item = await Item.create({
-        nome: req.body.nome
-      })
-      await ItemTicket.create({
-        valorUn: req.body.valorUn,
-        quantidade: req.body.quantidade,
-        valorTot: totalItem,
-        idTicket: req.params.idTicket,
-        idItem: item.id
-      }).then(()=>{
-        res.status(200).redirect(`/ficha/${req.params.idTicket}`)
-      }).catch((err)=>{
-        res.status(404).send(`Erro ao cadastrar item ${err}`)
-      })
-    })
+
+  //UPDATE
+
+  //DELETE
 
   //deletar cadastro
   // app.get('/deletar/:id', async(req, res)=>{
