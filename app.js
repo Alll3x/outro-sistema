@@ -41,55 +41,56 @@
     app.use(express.static(path.join(__dirname,'public')))
 
 //ROTAS
-  //PRINCIPAL
-  app.get('/', async(req, res)=>{
-      res.render('index')
-  })
-  
-  //CADASTRO USUÁRIO
-  app.get('/cadastro', async(req, res)=>{
-     res.render('cadastro')
-})
-
-  //EXIBIR LISTA DE USUÁRIOS CADASTRADOS
-  app.get('/usuariosCadastrados', async(req, res)=>{
-    const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS())
-    res.render('usuariosCadastrados', { dados:result[0] })
+  // GET
+    //PRINCIPAL
+    app.get('/', async(req, res)=>{
+        res.render('index')
+    })
+    
+    //CADASTRO USUÁRIO
+    app.get('/cadastro', async(req, res)=>{
+      res.render('cadastro')
   })
 
-  //PAGINA ESPECIFICA DE CADA CLIENTE
-  app.get('/cadum/:id', async(req, res)=>{
-    const userId = req.params.id
-      const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(userId))
-      const ticket = await db.query(userQuery.SELECT_TICKET_BY_USERID(userId))
-    const idVeiculo = ticket[0][0]?.idVeiculo || null
-      const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(idVeiculo))
-    res.render('cadum', { dados:result[0], tickets: ticket[0], vehicles: vehicle[0] })
-      
-  })
+    //EXIBIR LISTA DE USUÁRIOS CADASTRADOS
+    app.get('/usuariosCadastrados', async(req, res)=>{
+      const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS())
+      res.render('usuariosCadastrados', { dados:result[0] })
+    })
 
-  // PAGINA CADASTRAR VEICULO NO USUARIO
-  app.get('/cadastrarVeiculo/:id', async(req, res)=>{
-    const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
-    const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
-    res.render('cadastroVeiculos', { dados:result[0], vehicles: vehicle[0] })
+    //PAGINA ESPECIFICA DE CADA CLIENTE
+    app.get('/cadum/:id', async(req, res)=>{
+      const userId = req.params.id
+        const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(userId))
+        const ticket = await db.query(userQuery.SELECT_TICKET_BY_USERID(userId))
+      const idVeiculo = ticket[0][0]?.idVeiculo || null
+        const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(idVeiculo))
+      res.render('cadum', { dados:result[0], tickets: ticket[0], vehicles: vehicle[0] })
+        
+    })
 
-  })
+    // PAGINA CADASTRAR VEICULO NO USUARIO
+    app.get('/cadastrarVeiculo/:id', async(req, res)=>{
+      const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
+      const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
+      res.render('cadastroVeiculos', { dados:result[0], vehicles: vehicle[0] })
 
-  //CRIAR FICHA
-  app.get('/criarFicha/:id', async(req,res)=>{
-    const resultUser = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
-    const resultVehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
-    res.render('criarFicha', { vehicle:resultVehicle[0], user:resultUser[0] })
-  })
+    })
 
-  //Ficha
-  app.get('/ficha/:id', async(req, res)=>{
-    const ticketId = req.params.id
-    const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(ticketId))
-    const itemsTicket = await db.query(ticketQuery.SELECT_ITEMSTICKET_BY_TICKETID(ticketId))
-    res.render('ticket', { ticket: ticketResult[0], items: itemsTicket[0]  })
-  })
+    //CRIAR FICHA
+    app.get('/criarFicha/:id', async(req,res)=>{
+      const resultUser = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
+      const resultVehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
+      res.render('criarFicha', { vehicle:resultVehicle[0], user:resultUser[0] })
+    })
+
+    //Ficha
+    app.get('/ficha/:id', async(req, res)=>{
+      const ticketId = req.params.id
+      const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(ticketId))
+      const itemsTicket = await db.query(ticketQuery.SELECT_ITEMSTICKET_BY_TICKETID(ticketId))
+      res.render('ticket', { ticket: ticketResult[0], items: itemsTicket[0]  })
+    })
 
 //BANCO DE DADOS
   // POST
