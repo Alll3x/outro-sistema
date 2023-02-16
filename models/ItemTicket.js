@@ -17,6 +17,10 @@ const ItemTicket = db.define('ItemTickets',{
   quantidade:{
   type: Sequelize.INTEGER,
   allowNull: false
+  },
+  valorTot:{
+    type: Sequelize.FLOAT,
+    allowNull: false
   }
 })
 

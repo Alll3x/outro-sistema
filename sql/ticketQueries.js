@@ -66,6 +66,7 @@ const SELECT_ITEMSTICKET_BY_TICKETID = (id) =>{
 	  it.id AS idItemTicket,
       it.valorUn,
       it.quantidade,
+      it.valorTot,
       DATE_FORMAT(it.createdAt, '%d-%m-%Y') AS createdAt,
     i.id As IdItem,
 		  i.nome

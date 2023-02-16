@@ -1,5 +1,5 @@
 const campoValorTotal = document.getElementById('valorTotal');
-const valoresUn = document.querySelectorAll("td.valorUn");
+const valoresUn = document.querySelectorAll("td.valor");
 
 const valorTotal = (valoresUn) => {
   let total = 0;

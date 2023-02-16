@@ -153,12 +153,14 @@
   
   //Adicionar peça na lista
     app.post('/addPeca/:idTicket', async(req,res)=>{
+      const totalItem = await req.body.valorUn * req.body.quantidade
       const item = await Item.create({
         nome: req.body.nome
       })
       await ItemTicket.create({
         valorUn: req.body.valorUn,
         quantidade: req.body.quantidade,
+        valorTot: totalItem,
         idTicket: req.params.idTicket,
         idItem: item.id
       }).then(()=>{
