@@ -22,7 +22,7 @@
   - HandleBars
   - Sequelize 
   - Node
-  - BodyParsero
+  - BodyParser
   - DOTENV
 ## Banco de dados 
   - SQL
