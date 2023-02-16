@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx nodemon app.js",
     "commit": "git add . && git commit -m 'autoCommit' && git push origin master",
-    "commitplay": "git add . && git commit -m 'autoCommit' && git push origin master && npm run dev",
+    "commitPlay": "git add . && git commit -m 'autoCommit' && git push origin master && npm run dev",
     "atualizar": "git pull origin master  && npm run dev"
   },
   "author": "",
