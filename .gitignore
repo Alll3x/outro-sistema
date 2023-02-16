@@ -1,3 +1,4 @@
 node_modules
 package-lock.json
 outro sistema.code-workspace
+.env

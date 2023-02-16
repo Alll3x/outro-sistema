@@ -22,11 +22,11 @@
   - HandleBars
   - Sequelize 
   - Node
-  - BodyParser
+  - BodyParsero
+  - DOTENV
 ## Banco de dados 
   - SQL
 
 ## Tecnologias a serem implementadas:
-  - DOTENV
   - Migrations
   - Gerar PDF

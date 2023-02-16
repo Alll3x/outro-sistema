@@ -3,6 +3,7 @@
   const handle = require('express-handlebars')
   const bodyParser = require('body-parser')
   const path = require('path')
+               require('dotenv').config();
 
 //SQL QUERIES
   const userQuery = require('./sql/userQueries')
@@ -180,6 +181,6 @@
   // })
 
 //SERVIDOR
-  app.listen(8080,()=>{ 
-    console.log("Servidor iniciado em: http://localhost:8080")
-  })
+  app.listen(process.env.PORT,()=>{ 
+    console.log(`Servidor iniciado em: http://localhost:${process.env.PORT}`)
+  }) 
