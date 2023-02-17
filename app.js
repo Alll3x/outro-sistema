@@ -154,7 +154,7 @@
         })
       })
     
-    //Adicionar peça na lista
+    //ADICIONAR PEÇA NA LISTA
       app.post('/addPeca/:idTicket', async(req,res)=>{
         const totalItem = await req.body.valorUn * req.body.quantidade
         const item = await Item.create({
@@ -176,6 +176,7 @@
   //UPDATE
 
   //DELETE
+    //ITEM DA FICHA
       app.get('/removerItem/:idItemTicket/:idTicket', async(req,res)=>{
         await db.query(ticketQuery.DELETE_ITEMSTICKET_BY_ITEMTICKETID(req.params.idItemTicket)).then(()=>{
           res.status(200).redirect(`/ficha/${req.params.idTicket}`)
