@@ -67,6 +67,7 @@ const SELECT_ITEMSTICKET_BY_TICKETID = (id) =>{
       it.valorUn,
       it.quantidade,
       it.valorTot,
+      it.idTicket,
       DATE_FORMAT(it.createdAt, '%d-%m-%Y') AS createdAt,
     i.id As IdItem,
 		  i.nome
@@ -81,6 +82,17 @@ const SELECT_ITEMSTICKET_BY_TICKETID = (id) =>{
     `
   )
 }
+
+const DELETE_ITEMSTICKET_BY_ITEMTICKETID = (id) =>{
+  return(
+  `
+DELETE FROM 
+  ofmeclara.itemtickets
+WHERE 
+  id = ${id}
+  `
+  )
+}
 module.exports = {
   // RETORNA TODAS AS INFORMAÇÕES DO TICKET COM BASE NO ID DELE
     SELECT_TICKET_BY_ID, 
@@ -88,4 +100,6 @@ module.exports = {
     SELECT_TICKET_BY_ID_WITH_USER_AND_CAR,
   //RETORNA TODAS OS ITEM DO TICKET
     SELECT_ITEMSTICKET_BY_TICKETID,
+  //DELETA O ITEMTICKET PELO ID
+    DELETE_ITEMSTICKET_BY_ITEMTICKETID,
 } 

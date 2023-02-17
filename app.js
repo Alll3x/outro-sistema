@@ -43,23 +43,23 @@
 //ROTAS
   // GET
     //PRINCIPAL
-    app.get('/', async(req, res)=>{
+    app.get('/', async(req,res)=>{
         res.render('index')
     })
     
     //CADASTRO USUÁRIO
-    app.get('/cadastro', async(req, res)=>{
+    app.get('/cadastro', async(req,res)=>{
       res.render('cadastro')
   })
 
     //EXIBIR LISTA DE USUÁRIOS CADASTRADOS
-    app.get('/usuariosCadastrados', async(req, res)=>{
+    app.get('/usuariosCadastrados', async(req,res)=>{
       const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS())
       res.render('usuariosCadastrados', { dados:result[0] })
     })
 
     //PAGINA ESPECIFICA DE CADA CLIENTE
-    app.get('/cadum/:id', async(req, res)=>{
+    app.get('/cadum/:id', async(req,res)=>{
       const userId = req.params.id
         const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(userId))
         const ticket = await db.query(userQuery.SELECT_TICKET_BY_USERID(userId))
@@ -70,7 +70,7 @@
     })
 
     // PAGINA CADASTRAR VEICULO NO USUARIO
-    app.get('/cadastrarVeiculo/:id', async(req, res)=>{
+    app.get('/cadastrarVeiculo/:id', async(req,res)=>{
       const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
       const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
       res.render('cadastroVeiculos', { dados:result[0], vehicles: vehicle[0] })
@@ -85,7 +85,7 @@
     })
 
     //Ficha
-    app.get('/ficha/:id', async(req, res)=>{
+    app.get('/ficha/:id', async(req,res)=>{
       const ticketId = req.params.id
       const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(ticketId))
       const itemsTicket = await db.query(ticketQuery.SELECT_ITEMSTICKET_BY_TICKETID(ticketId))
@@ -95,7 +95,7 @@
 //BANCO DE DADOS
   // POST
     //USUARIO
-      app.post('/cadastrar', async(req, res)=>{
+      app.post('/cadastrar', async(req,res)=>{
           const newAddress = await Address.create({
             cep: req.body.cep,
             rua: req.body.rua,
@@ -119,7 +119,7 @@
       })
     
     //VEICULO
-      app.post('/cadastrarVeiculos/:idUser', async(req, res)=>{
+      app.post('/cadastrarVeiculos/:idUser', async(req,res)=>{
         await Vehicle.create({
           marca: req.body.marca,
           modelo: req.body.modelo,
@@ -176,7 +176,13 @@
   //UPDATE
 
   //DELETE
-
+      app.get('/removerItem/:idItemTicket/:idTicket', async(req,res)=>{
+        await db.query(ticketQuery.DELETE_ITEMSTICKET_BY_ITEMTICKETID(req.params.idItemTicket)).then(()=>{
+          res.status(200).redirect(`/ficha/${req.params.idTicket}`)
+        }).catch((err)=>{
+          res.status(400).send('Erro' + err)
+        })
+      })
   //deletar cadastro
   // app.get('/deletar/:id', async(req, res)=>{
   //   User.destroy({where:{'id': req.params.id}}).then(()=>{
