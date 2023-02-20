@@ -39,6 +39,6 @@ Vehicle.belongsTo(User,{
 //se não existir criar a tabela
   // Vehicle.sync()
 //recriar tabela
-  //  Vehicle.sync({force: true})
+//    Vehicle.sync({force: true})
 
 module.exports = Vehicle
