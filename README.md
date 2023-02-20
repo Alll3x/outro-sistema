@@ -32,3 +32,8 @@
 ## Tecnologias a serem implementadas:
   - Migrations
   - Gerar PDF
+
+ ### v2
+ 
+  ## Tecnologias a serem implementadas:
+  - React
