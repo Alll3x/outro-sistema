@@ -8,7 +8,7 @@ const SELECT_TICKET_BY_ID = (id) => {
       t.idUsuario,
       t.idVeiculo
     FROM 
-	    ofmeclara.tickets t
+	    ${process.env.DB_NAME}.tickets t
     WHERE
 	    t.id = ${id}
     `
@@ -40,17 +40,17 @@ const SELECT_TICKET_BY_ID_WITH_USER_AND_CAR = (id) => {
       a.cidade,
       a.uf
   FROM
-    ofmeclara.tickets t
+    ${process.env.DB_NAME}.tickets t
   JOIN
-    ofmeclara.users u
+    ${process.env.DB_NAME}.users u
   ON
     t.idUsuario = u.id
   JOIN
-    ofmeclara.vehicles v
+    ${process.env.DB_NAME}.vehicles v
   ON
     t.idVeiculo = v.id
   JOIN 
-    ofmeclara.addresses a
+    ${process.env.DB_NAME}.addresses a
   ON
     a.id = u.idEndereco
   WHERE
@@ -72,9 +72,9 @@ const SELECT_ITEMSTICKET_BY_TICKETID = (id) =>{
     i.id As IdItem,
 		  i.nome
   FROM
-	  ofmeclara.itemtickets it
+	  ${process.env.DB_NAME}.itemtickets it
   JOIN 
-	  ofmeclara.items i
+	  ${process.env.DB_NAME}.items i
   ON
 	  i.id = it.idItem
   where
@@ -87,12 +87,13 @@ const DELETE_ITEMSTICKET_BY_ITEMTICKETID = (id) =>{
   return(
   `
 DELETE FROM 
-  ofmeclara.itemtickets
+  ${process.env.DB_NAME}.itemtickets
 WHERE 
   id = ${id}
   `
   )
 }
+
 module.exports = {
   // RETORNA TODAS AS INFORMAÇÕES DO TICKET COM BASE NO ID DELE
     SELECT_TICKET_BY_ID, 

@@ -6,7 +6,7 @@
       u.nome,
       u.telefone
     FROM
-      ofmeclara.users u
+      ${process.env.DB_NAME}.users u
     `
   )};
 
@@ -25,9 +25,9 @@
       a.cidade,
       a.uf
     FROM
-      ofmeclara.users u
+      ${process.env.DB_NAME}.users u
     JOIN 
-      ofmeclara.addresses a ON u.idEndereco = a.id
+      ${process.env.DB_NAME}.addresses a ON u.idEndereco = a.id
     WHERE
       u.id = ${id}
     `
@@ -48,9 +48,9 @@
         a.cidade,
         a.uf
       FROM
-        ofmeclara.users u
+        ${process.env.DB_NAME}.users u
       JOIN 
-        ofmeclara.addresses a ON u.idEndereco = a.id
+        ${process.env.DB_NAME}.addresses a ON u.idEndereco = a.id
       `
   )};
 
@@ -66,7 +66,7 @@
         v.anotacoes,
         v.idUsuario
       FROM 
-        ofmeclara.vehicles v
+        ${process.env.DB_NAME}.vehicles v
       WHERE 
         v.idUsuario = ${id}
       `
@@ -88,14 +88,15 @@
       v.placa,
       v.anotacoes
     FROM 
-      ofmeclara.tickets t
+      ${process.env.DB_NAME}.tickets t
     JOIN 
-      ofmeclara.vehicles v on t.idVeiculo = v.id
+      ${process.env.DB_NAME}.vehicles v on t.idVeiculo = v.id
     WHERE 
       t.idUsuario = ${id}
     `
     )
   }
+  
 module.exports = {
   //Retorna apenas nome e telefone de todos os usuários
   SELECT_USERDATA,
