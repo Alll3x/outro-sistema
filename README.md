@@ -32,7 +32,6 @@
   - HandleBars
   - DOTENV
 
-
 ## Banco de dados 
   - SQL
 
@@ -40,6 +39,5 @@
   - Gerar PDF
 
  ### V2
- 
   ## Tecnologias a serem implementadas:
   - React

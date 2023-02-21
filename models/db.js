@@ -8,7 +8,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, pr
 
 sequelize.authenticate()
 .then(() => {
-  console.log("Conectado ao servidor " + process.env.DB_NAME)
+  console.log("Conectado ao banco de dados: " + process.env.DB_NAME)
 }).catch((err) => {
   console.log("Erro ao conectar com banco de dados " + err);
 })
