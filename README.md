@@ -9,6 +9,10 @@
   ## Comandos 
    ### Para instalar os pacotes 
     npm install
+   ### Para criar o banco de dados
+    npx sequelize-cli db:create
+   ### Para utilizar as migrations no banco
+    npx sequelize-cli db:migrate
    ### Para executar em modo de desenvolvedor 
     npm run dev
    ### Para auto commit 
@@ -26,11 +30,12 @@
   - Node
   - BodyParser
   - DOTENV
+  - Migrations
+
 ## Banco de dados 
   - SQL
 
 ## Tecnologias a serem implementadas:
-  - Migrations
   - Gerar PDF
 
  ### v2

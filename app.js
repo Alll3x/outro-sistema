@@ -62,7 +62,7 @@
     app.get('/cadum/:id', async(req,res)=>{
       const userId = req.params.id
         const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(userId))
-        const ticket = await db.query(userQuery.SELECT_TICKET_BY_USERID(userId))
+        const ticket = await db.query(userQuery.SELECT_TICKET_BY_USERID(userId)) || null
       const idVeiculo = ticket[0][0]?.idVeiculo || null
         const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(idVeiculo))
       res.render('cadum', { dados:result[0], tickets: ticket[0], vehicles: vehicle[0] })
