@@ -23,14 +23,15 @@
     npm run atualizar 
   
 ## Tecnologias utilizadas
- ### V1
-  - Express
-  - HandleBars
-  - Sequelize 
+ ### V1  
   - Node
-  - BodyParser
-  - DOTENV
+  - Express
+  - Sequelize   
   - Migrations
+  - BodyParser  
+  - HandleBars
+  - DOTENV
+
 
 ## Banco de dados 
   - SQL
@@ -38,7 +39,7 @@
 ## Tecnologias a serem implementadas:
   - Gerar PDF
 
- ### v2
+ ### V2
  
   ## Tecnologias a serem implementadas:
   - React
