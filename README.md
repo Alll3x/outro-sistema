@@ -1,7 +1,7 @@
 # Funcionalidades
   - Cadastrar usuário com endereço;
-  - Cadastrar item do usuário;
-  - Criar uma ficha de manutenção;
+  - Cadastrar objeto do usuário;
+  - Criar uma ficha de manutenção para o objeto;
   - Adicionar itens a ficha;
   - Calcula automáticamente o valor final;
   - Gera a ficha em PDF, e faz o download automaticamente
