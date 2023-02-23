@@ -4,6 +4,7 @@
   const bodyParser = require('body-parser')
   const path = require('path')
                require('dotenv').config();
+  const poop = require('puppeteer')
 
 //SQL QUERIES
   const userQuery = require('./sql/userQueries')
@@ -44,18 +45,19 @@
   // GET
     //PRINCIPAL
     app.get('/', async(req,res)=>{
-        res.render('index')
+        // res.render('index')
+        res.render('index', {showHeader: true})
     })
     
     //CADASTRO USUÁRIO
     app.get('/cadastro', async(req,res)=>{
-      res.render('cadastro')
+      res.render('cadastro', { showHeader: true })
   })
 
     //EXIBIR LISTA DE USUÁRIOS CADASTRADOS
     app.get('/usuariosCadastrados', async(req,res)=>{
       const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS())
-      res.render('usuariosCadastrados', { dados:result[0] })
+      res.render('usuariosCadastrados', { dados:result[0], showHeader: true })
     })
 
     //PAGINA ESPECIFICA DE CADA CLIENTE
@@ -65,7 +67,7 @@
         const ticket = await db.query(userQuery.SELECT_TICKET_BY_USERID(userId)) || null
       const idVeiculo = ticket[0][0]?.idVeiculo || null
         const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(idVeiculo))
-      res.render('cadum', { dados:result[0], tickets: ticket[0], vehicles: vehicle[0] })
+      res.render('cadum', { dados:result[0], tickets: ticket[0], vehicles: vehicle[0], showHeader: true })
         
     })
 
@@ -73,7 +75,7 @@
     app.get('/cadastrarVeiculo/:id', async(req,res)=>{
       const result = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
       const vehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
-      res.render('cadastroVeiculos', { dados:result[0], vehicles: vehicle[0] })
+      res.render('cadastroVeiculos', { dados:result[0], vehicles: vehicle[0], showHeader: true })
 
     })
 
@@ -81,7 +83,7 @@
     app.get('/criarFicha/:id', async(req,res)=>{
       const resultUser = await db.query(userQuery.SELECT_USERDATA_ADDRESS_ID(req.params.id))
       const resultVehicle = await db.query(userQuery.SELECT_VEHICLES_BY_USERID(req.params.id))
-      res.render('criarFicha', { vehicle:resultVehicle[0], user:resultUser[0] })
+      res.render('criarFicha', { vehicle:resultVehicle[0], user:resultUser[0], showHeader: true })
     })
 
     //Ficha
@@ -89,8 +91,41 @@
       const ticketId = req.params.id
       const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(ticketId))
       const itemsTicket = await db.query(ticketQuery.SELECT_ITEMSTICKET_BY_TICKETID(ticketId))
-      res.render('ticket', { ticket: ticketResult[0], items: itemsTicket[0]  })
+      res.render('ticket', { ticket: ticketResult[0], items: itemsTicket[0],showHeader: true })
     })
+
+    //Montar PDF
+    app.get('/gerarPdf', async(req,res)=>{
+      res.render('pdf')
+    })
+    //Gerar PDF
+    app.get('/pdf', async(req,res)=>{
+      const browser = await poop.launch()
+      const page = await browser.newPage()
+    
+      await page.goto(`${process.env.BASE_URL}/gerarPdf`), {
+        waitUntil: 'networkidle0'
+      }
+
+       const pdf = await page.pdf({
+        printBackground: true,
+        format: 'Letter',
+        margin:{
+          top: '20px',
+          bottom: '20px',
+          left: '20px',
+          right: '20px'
+        }
+      })
+
+      await browser.close()
+      res.contentType('application/pdf')
+
+      res.setHeader('Content-Disposition', 'attachment; filename=arquivo.pdf')
+      res.contentType('application/pdf')
+      res.send(pdf)
+    })
+    
 
 //BANCO DE DADOS
   // POST

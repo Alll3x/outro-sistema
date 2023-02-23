@@ -17,6 +17,7 @@
     "express-handlebars": "^5.0.0",
     "mssql": "^9.1.1",
     "mysql2": "^2.3.3",
+    "puppeteer": "^19.7.2",
     "sequelize": "^6.28.0"
   },
   "devDependencies": {
