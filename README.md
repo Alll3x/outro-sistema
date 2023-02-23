@@ -31,12 +31,10 @@
   - BodyParser  
   - HandleBars
   - DOTENV
-
+  - Gerar PDF (puppeteer)
+  
 ## Banco de dados 
   - SQL
-
-## Tecnologias a serem implementadas:
-  - Gerar PDF
 
  ### V2
   ## Tecnologias a serem implementadas:
