@@ -4,7 +4,8 @@
   - Criar uma ficha de manutenção;
   - Adicionar itens a ficha;
   - Calcula automáticamente o valor final;
-
+  - Gera a ficha em PDF, e faz o download automaticamente
+  
 # Para devs
   ## Comandos 
    ### Para instalar os pacotes 
