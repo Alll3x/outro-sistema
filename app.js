@@ -52,7 +52,7 @@
     //CADASTRO USUÁRIO
     app.get('/cadastro', async(req,res)=>{
       res.render('cadastro', { showHeader: true })
-  })
+    })
 
     //EXIBIR LISTA DE USUÁRIOS CADASTRADOS
     app.get('/usuariosCadastrados', async(req,res)=>{
