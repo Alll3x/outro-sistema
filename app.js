@@ -220,14 +220,6 @@
           res.status(400).send('Erro' + err)
         })
       })
-  //deletar cadastro
-  // app.get('/deletar/:id', async(req, res)=>{
-  //   User.destroy({where:{'id': req.params.id}}).then(()=>{
-  //     res.redirect('/')
-  //   }).catch((err)=>{
-  //     res.send('Este cadastro não existe !')
-  //   })
-  // })
 
 //SERVIDOR
   app.listen(process.env.PORT,()=>{ 
