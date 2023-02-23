@@ -86,7 +86,7 @@
       res.render('criarFicha', { vehicle:resultVehicle[0], user:resultUser[0], showHeader: true })
     })
 
-    //Ficha
+    //VISUALIZAR FICHA 
     app.get('/ficha/:id', async(req,res)=>{
       const ticketId = req.params.id
       const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(ticketId))
@@ -94,11 +94,12 @@
       res.render('ticket', { ticket: ticketResult[0], items: itemsTicket[0],showHeader: true })
     })
 
-    //Montar PDF
+    //MONTAR PDF
     app.get('/gerarPdf', async(req,res)=>{
       res.render('pdf')
     })
-    //Gerar PDF
+
+    //GERAR PDF
     app.get('/pdf', async(req,res)=>{
       const browser = await poop.launch()
       const page = await browser.newPage()
