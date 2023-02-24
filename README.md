@@ -25,14 +25,14 @@
   
 ## Tecnologias utilizadas
  ### V1  
-  - Node | https://nodejs.org/en/docs/
-  - Express | https://expressjs.com/pt-br/4x/api.html
-  - Sequelize | https://sequelize.org/docs/v6/getting-started/
+  - Node       | https://nodejs.org/en/docs/
+  - Express    | https://expressjs.com/pt-br/4x/api.html
+  - Sequelize  | https://sequelize.org/docs/v6/getting-started/
   - Migrations | https://sequelize.org/docs/v6/other-topics/migrations/
   - BodyParser | http://expressjs.com/en/resources/middleware/body-parser.html
   - HandleBars | https://handlebarsjs.com/api-reference/
-  - DOTENV | https://www.dotenv.org/docs/
-  - Gerar PDF (puppeteer) | https://pptr.dev
+  - DOTENV     | https://www.dotenv.org/docs/
+  - Puppeteer  | https://pptr.dev
   
 ## Banco de dados 
   - SQL
