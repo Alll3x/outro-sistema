@@ -104,7 +104,7 @@
       const browser = await poop.launch()
       const page = await browser.newPage()
     
-      await page.goto(`${process.env.BASE_URL}/gerarPdf`), {
+      await page.goto(`${process.env.BASE_URL}${process.env.PORT}/gerarPdf`), {
         waitUntil: 'networkidle0'
       }
 
@@ -120,18 +120,18 @@
       })
 
       await browser.close()
-      res.contentType('application/pdf')
 
+      res.contentType('application/pdf')
       res.setHeader('Content-Disposition', 'attachment; filename=arquivo.pdf')
       res.contentType('application/pdf')
+
       res.send(pdf)
     })
     
-
 //BANCO DE DADOS
   // POST
     //USUARIO
-      app.post('/cadastrar', async(req,res)=>{
+       app.post('/cadastrar', async(req,res)=>{
           const newAddress = await Address.create({
             cep: req.body.cep,
             rua: req.body.rua,
