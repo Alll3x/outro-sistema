@@ -47,7 +47,8 @@
     //PRINCIPAL
       app.get('/', async(req,res)=>{
         const title = process.env.INDEX_NAME
-        res.render('index', { showHeader: true, titleName: title  })
+        // res.render('index', { showHeader: true, titleName: title  })
+        res.redirect('/usuariosCadastrados')
       })
     
     //CADASTRO USUÁRIO
