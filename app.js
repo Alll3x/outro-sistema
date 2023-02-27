@@ -28,10 +28,11 @@
 
   //HANDLEBARS
     app.engine('handlebars', handle({defaultLayouts : 'main',
-    runtimeOptions: {
-      allowProtoPropertiesByDefault: true,
-      allowProtoMethodsByDefault: true,
-    }}))
+      runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+      }
+    }))
     app.set('view engine', 'handlebars') 
 
   //BODY-PARSER
@@ -129,7 +130,7 @@
 //BANCO DE DADOS
   // POST
     //USUARIO
-       app.post('/cadastrar', async(req,res)=>{
+      app.post('/cadastrar', async(req,res)=>{
           const newAddress = await Address.create({
             cep: req.body.cep,
             rua: req.body.rua,
