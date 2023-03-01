@@ -95,16 +95,19 @@
       })
 
     //MONTAR PDF
-      app.get('/gerarPdf', async(req,res)=>{
-        res.render('pdf')
+      app.get('/gerarPdf/:id', async(req,res)=>{
+        const ticketId = req.params.id
+        const ticketResult  = await db.query(ticketQuery.SELECT_TICKET_BY_ID_WITH_USER_AND_CAR(ticketId))
+        const itemsTicket = await db.query(ticketQuery.SELECT_ITEMSTICKET_BY_TICKETID(ticketId))
+        res.render('pdf', { ticket: ticketResult[0], items: itemsTicket[0] })
       })
 
     //GERAR PDF
-      app.get('/pdf', async(req,res)=>{
+      app.get('/pdf/:id', async(req,res)=>{
         const browser = await poop.launch()
         const page = await browser.newPage()
       
-        await page.goto(`${process.env.BASE_URL}${process.env.PORT}/gerarPdf`), {
+        await page.goto(`${process.env.BASE_URL}${process.env.PORT}/gerarPdf/${req.params.id}`), {
           waitUntil: 'networkidle0'
         }
 
@@ -112,12 +115,12 @@
           printBackground: true,
           format: 'Letter',
           margin:{
-            top: '20px',
-            bottom: '20px',
-            left: '20px',
-            right: '20px'
+            top: '10px',
+            bottom: '10px',
+            left: '8px',
+            right: '8px'
           }
-        })
+        });
 
       await browser.close()
 

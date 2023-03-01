@@ -2,5 +2,42 @@
 <title></title>
 {{!-- BODY --}}
 <body>
-
+  <div class="container">
+{{#each ticket}}
+   <div id="header">
+      <p>Cod: {{idUsuario}} | {{nome}}</p>
+      <p>Telefone: {{telefone}}</p>
+      <p>Cod: {{idVeiculo}} | {{marca}} - {{modelo}} {{ano}}</p>
+    </div>
+{{/each}}
+    <div id="gap1">
+      <img class="logo" src="/images/logo.png">
+    </div>
+    <div id="tabela">
+      <table class="pdf-table">
+        <tr>
+          <td>Cod. Peça</td>
+          <td>Quantidade</td>
+          <td>Peça/Serviço</td>
+          <td>Valor Unitário</td>
+          <td>Data da Compra</td>
+        </tr>
+{{#each items}}
+          <tr>
+          <td>{{idItemTicket}}</td>
+          <td>{{quantidade}}</td>
+          <td>{{nome}}</td>
+          <td >{{valorUn}}</td>
+          <td>{{createdAt}}</td>
+        </tr>
+{{/each}}
+        <tr>
+          <td>Valor Total: R$</td>
+          <td>9.999,99</td>
+          <td></td>
+          <td>Garantia:</td>
+          <td>9999 segundos</td>
+        </tr>
+      </table>
+  </div>
 </body>

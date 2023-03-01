@@ -226,3 +226,40 @@ padding: 5px;
 .input-quantidade{
   width: 7vh;
 } 
+
+.container{
+  height: auto;
+  display: grid;
+  grid-template-areas: 
+  'gap1  header header'
+  'tabela tabela tabela'
+  ;
+}
+ 
+#header{
+  grid-area: header; 
+  font-size: 30px;
+} 
+
+#tabela{
+  grid-area: tabela;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#gap1{
+  grid-area: gap1;
+  padding: 15px 0px 0px 0px;
+} 
+
+.logo{
+  width: 25vh;
+  height: auto;
+  padding: 5px;
+}
+
+.pdf-table{
+  font-size: 20px;
+  width: 100vh;
+}

@@ -9,7 +9,7 @@
       <section class="section-client"> 
 {{#each ticket}}
         <label class="font">Cod. Cliente:</label>
-          <input type="text" class="font codCliente" value="{{idVeiculo}}" disabled>
+          <input type="text" class="font codCliente" value="{{idUsuario}}" disabled>
         <label class="font">Nome:</label>
           <input type="text" class="font" value="{{nome}}" disabled>
         <label class="font">Telefone:</label>
@@ -62,6 +62,7 @@
         <td id="valorTotal"></td>
 {{#each ticket}}
        <td>Garantia:{{garantia}}</td>
+       <a href="/pdf/{{idTicket}}"><button>Pdf</button></a>
 {{/each}}
       </table>
     </div>
