@@ -5,6 +5,7 @@
   const path = require('path')
                require('dotenv').config();
   const poop = require('puppeteer')
+  const handlebars = require('handlebars');
 
 //SQL QUERIES
   const userQuery = require('./sql/userQueries')

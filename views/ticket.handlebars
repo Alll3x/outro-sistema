@@ -60,15 +60,11 @@
 {{/each}}
         <td>Valor Total: R$</td>
         <td id="valorTotal"></td>
-{{#each ticket}}
-       <td>Garantia:{{garantia}}</td>
-       <a href="/pdf/{{idTicket}}"><button>Pdf</button></a>
-{{/each}}
       </table>
     </div>
   </section>
   </div>
-  {{!-- SCRIPTS --}}
-    {{!-- FAZ O CALCULO DO VALOR TOTAL --}}
-      <script src="/js/amountCalc.js"></script>
+{{!-- SCRIPTS --}}
+  {{!-- FAZ O CALCULO DO VALOR TOTAL --}}
+    <script src="/js/amountCalc.js"></script>
 </body>

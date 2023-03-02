@@ -16,7 +16,7 @@ const Ticket = db.define('tickets',{
   },
   garantia:{
   type: Sequelize.INTEGER,
-  allowNull: false
+  allowNull: true
   },
   valorFinal:{
   type: Sequelize.FLOAT,
