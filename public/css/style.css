@@ -264,3 +264,8 @@ padding: 5px;
   font-size: 20px;
   width: 100vh;
 }
+
+.table-data{
+  display: flex; 
+  gap: 30px;
+}

@@ -4,6 +4,7 @@ const SELECT_TICKET_BY_ID = (id) => {
     SELECT 
       t.id AS idTicket,
       t.status,
+      t.valorFinal,
       t.garantia,
       t.idUsuario,
       t.idVeiculo
@@ -21,6 +22,7 @@ const SELECT_TICKET_BY_ID_WITH_USER_AND_CAR = (id) => {
   SELECT
     t.id AS idTicket,
       t.status,
+      t.valorFinal,
       t.garantia,
       DATE_FORMAT(t.createdAt, '%d-%m-%Y') AS createdAt,
     u.id AS idUsuario,
@@ -94,13 +96,28 @@ WHERE
   )
 }
 
+const UPDATE_TICKET_VALUE_BY_IDTICKET = (id, valor) =>{
+  return(
+  `
+  UPDATE 
+    ${process.env.DB_NAME}.tickets t
+  SET
+    t.valorFinal = ${valor}
+  WHERE 
+    t.id = ${id};
+  `
+  )
+}
+
 module.exports = {
   // RETORNA TODAS AS INFORMAÇÕES DO TICKET COM BASE NO ID DELE
     SELECT_TICKET_BY_ID, 
   // RETORNA TODAS AS INFORMAÇÕES COM BASE NO ID DELE
     SELECT_TICKET_BY_ID_WITH_USER_AND_CAR,
-  //RETORNA TODAS OS ITEM DO TICKET
+  // RETORNA TODAS OS ITEM DO TICKET
     SELECT_ITEMSTICKET_BY_TICKETID,
-  //DELETA O ITEMTICKET PELO ID
+  // DELETA O ITEMTICKET PELO ID
     DELETE_ITEMSTICKET_BY_ITEMTICKETID,
+  // INSERE O VALOR FINAL DO TICKET
+    UPDATE_TICKET_VALUE_BY_IDTICKET,
 } 

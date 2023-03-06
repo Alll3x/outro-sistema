@@ -23,20 +23,20 @@
           <input type="text" class="font" value="{{ano}}" disabled>
         <label class="font">Placa:</label>
           <input type="text" class="font" value="{{placa}}" disabled>
-         <label class="font">Status:</label>
-          <input type="text" class="font" value="{{status}}" disabled>
         <label class="font">Entrada:</label>
           <input type="text" class="font" value="{{createdAt}}" disabled>
       </section>
     </div>
   <section class="flex-ticket">
     <div class="data-table">
-      <form action="/addPeca/{{idTicket}}" method="POST">
-        <button>+ Adicionar</button>
-        <input type="text" class="input-quantidade" name="quantidade" placeholder="Quantidade">
-        <input type="text" name="nome" placeholder="Peça/Serviço">
-        <input type="text" name="valorUn" placeholder="Valor Unitário">
-      </form>
+      <div class="table-data">
+        <form action="/addPeca/{{idTicket}}" method="POST">
+          <button>+ Adicionar</button>
+          <input type="text" class="input-quantidade" name="quantidade" placeholder="Quantidade">
+          <input type="text" name="nome" placeholder="Peça/Serviço">
+          <input type="text" name="valorUn" placeholder="Valor Unidade">
+        </form>
+      </div>
 {{/each}}
       <hr>
       <table class="pdf-table">
@@ -52,19 +52,20 @@
           <td>{{idItemTicket}}</td>
           <td>{{quantidade}}</td>
           <td>{{nome}}</td>
-          <td >{{valorUn}}</td>
-          <td class="valor" hidden>{{valorTot}}</td>
+          <td>{{valorUn}}</td>
           <td>{{createdAt}}</td>
-          <td><a href="/removerItem/{{idItemTicket}}/{{idTicket}}"><button>Excluir</button></a></td>
+          <td><a href="/removerItem/{{idTicket}}/{{valorTot}}/{{idItemTicket}}"><button>Excluir</button></a></td>
         </tr>
 {{/each}}
-        <td>Valor Total: R$</td>
-        <td id="valorTotal"></td>
+{{#each ticket}}
+          <td>Valor Total: R$</td>
+          <td>{{valorFinal}}</td>
+{{/each}}
       </table>
     </div>
   </section>
   </div>
 {{!-- SCRIPTS --}}
   {{!-- FAZ O CALCULO DO VALOR TOTAL --}}
-    <script src="/js/amountCalc.js"></script>
+    {{!-- <script src="/js/amountCalc.js"></script> --}}
 </body>

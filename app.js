@@ -181,6 +181,7 @@
         await Ticket.create({
           status: req.body.status,
           garantia: req.body.garantia,
+          valorFinal: 0,
           idUsuario: req.body.idUsuario,
           idVeiculo: req.body.idVeiculo
         }).then(()=>{
@@ -206,24 +207,31 @@
           idTicket: req.params.idTicket,
           idItem: item.id
         }).then(()=>{
-          res.status(200).redirect(`/ficha/${req.params.idTicket}`)
+          res.redirect(`/save/${req.params.idTicket}/${totalItem}`)
         }).catch((err)=>{
           res.status(404).send(`Erro ao cadastrar item ${err}`)
         })
       })
 
   //UPDATE
+      //SALVAR VALOR DO TICKET
+        app.get('/save/:idTicket/:value', async(req,res)=>{
+          const ticket = await db.query(ticketQuery.SELECT_TICKET_BY_ID(req.params.idTicket))
+          const value = parseFloat(ticket[0][0].valorFinal) + parseFloat(req.params.value)
+
+          await db.query(ticketQuery.UPDATE_TICKET_VALUE_BY_IDTICKET(req.params.idTicket, value))
+
+          res.redirect(`/ficha/${req.params.idTicket}`)
+        })
 
   //DELETE
     //ITEM DA FICHA
-      app.get('/removerItem/:idItemTicket/:idTicket', async(req,res)=>{
-        await db.query(ticketQuery.DELETE_ITEMSTICKET_BY_ITEMTICKETID(req.params.idItemTicket)).then(()=>{
-          res.status(200).redirect(`/ficha/${req.params.idTicket}`)
-        }).catch((err)=>{
-          res.status(400).send('Erro' + err)
+        app.get('/removerItem/:idTicket/:valor/:idItemTicket', async(req,res)=>{
+          const valor = parseFloat(`-${req.params.valor}`)
+          await db.query(ticketQuery.DELETE_ITEMSTICKET_BY_ITEMTICKETID(req.params.idItemTicket))
+          res.redirect(`/save/${req.params.idTicket}/${valor}`)
         })
-      })
-
+        
 //SERVIDOR
   app.listen(process.env.PORT,()=>{ 
     console.log(`Servidor iniciado em: http://localhost:${process.env.PORT}`)
