@@ -226,11 +226,11 @@
 
   //DELETE
     //ITEM DA FICHA
-        app.get('/removerItem/:idTicket/:valor/:idItemTicket', async(req,res)=>{
-          const valor = parseFloat(`-${req.params.valor}`)
-          await db.query(ticketQuery.DELETE_ITEMSTICKET_BY_ITEMTICKETID(req.params.idItemTicket))
-          res.redirect(`/save/${req.params.idTicket}/${valor}`)
-        })
+      app.get('/removerItem/:idTicket/:valor/:idItemTicket', async(req,res)=>{
+        const valor = parseFloat(`-${req.params.valor}`)
+        await db.query(ticketQuery.DELETE_ITEMSTICKET_BY_ITEMTICKETID(req.params.idItemTicket))
+        res.redirect(`/save/${req.params.idTicket}/${valor}`)
+      })
 
 //SERVIDOR
   app.listen(process.env.PORT,()=>{ 
