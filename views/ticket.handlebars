@@ -32,9 +32,13 @@
       <div class="table-data">
         <form action="/addPeca/{{idTicket}}" method="POST">
           <button>+ Adicionar</button>
-          <input type="text" class="input-quantidade" name="quantidade" placeholder="Quantidade">
-          <input type="text" name="nome" placeholder="Peça/Serviço">
-          <input type="text" name="valorUn" placeholder="Valor Unidade">
+          <input type="text" class="input-quantidade" name="quantidade" placeholder="Quantidade" required>
+          <input type="text" name="nome" placeholder="Peça/Serviço" required>
+          <input type="text" name="valorUn" placeholder="Valor Unidade" required>
+        </form>
+        <form action="/concluir/{{idTicket}}" method="POST">
+          <input type="text" name="garantia" placeholder="Garantia em meses" required>
+          <button>Concluir e gerar PDF</button>
         </form>
       </div>
 {{/each}}

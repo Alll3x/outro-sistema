@@ -109,6 +109,20 @@ const UPDATE_TICKET_VALUE_BY_IDTICKET = (id, valor) =>{
   )
 }
 
+const UPDATE_TICKET_WARRANTY_STATUS_BY_IDTICKET = (id, tempo) =>{
+  return(
+  `
+  UPDATE 
+    ${process.env.DB_NAME}.tickets t
+  SET
+    t.garantia = ${tempo},
+    t.status = 'CONCLUÍDO'
+  WHERE 
+    t.id = ${id};
+  `
+  )
+}
+
 module.exports = {
   // RETORNA TODAS AS INFORMAÇÕES DO TICKET COM BASE NO ID DELE
     SELECT_TICKET_BY_ID, 
@@ -120,4 +134,6 @@ module.exports = {
     DELETE_ITEMSTICKET_BY_ITEMTICKETID,
   // INSERE O VALOR FINAL DO TICKET
     UPDATE_TICKET_VALUE_BY_IDTICKET,
+  // INSERE O TEMPO DA GARANTIA E ALTERA O STATUS
+    UPDATE_TICKET_WARRANTY_STATUS_BY_IDTICKET,
 } 

@@ -224,10 +224,16 @@
         res.redirect(`/ficha/${req.params.idTicket}`)
       })
 
+    //CONCLUIR TICKET E COLOCAR GARANTIA
+       app.post('/concluir/:idTicket', async(req,res)=>{
+        await db.query(ticketQuery.UPDATE_TICKET_WARRANTY_STATUS_BY_IDTICKET(req.params.idTicket, req.body.garantia))
+         res.redirect(`/pdf/${req.params.idTicket}`)
+      })
+
   //DELETE
     //ITEM DA FICHA
-      app.get('/removerItem/:idTicket/:valor/:idItemTicket', async(req,res)=>{
-        const valor = parseFloat(`-${req.params.valor}`)
+      app.get('/removerItem/:idTicket/:value/:idItemTicket', async(req,res)=>{
+        const valor = parseFloat(`-${req.params.value}`)
         await db.query(ticketQuery.DELETE_ITEMSTICKET_BY_ITEMTICKETID(req.params.idItemTicket))
         res.redirect(`/save/${req.params.idTicket}/${valor}`)
       })
