@@ -269,3 +269,9 @@ padding: 5px;
   display: flex; 
   gap: 30px;
 }
+
+.data-tabler{
+  border: solid black 2px;
+  border-radius: 5px;
+  padding: 10px;
+}
