@@ -225,7 +225,7 @@
       })
 
     //CONCLUIR TICKET E COLOCAR GARANTIA
-       app.post('/concluir/:idTicket', async(req,res)=>{
+      app.post('/concluir/:idTicket', async(req,res)=>{
         await db.query(ticketQuery.UPDATE_TICKET_WARRANTY_STATUS_BY_IDTICKET(req.params.idTicket, req.body.garantia))
         res.redirect(`/pdf/${req.params.idTicket}`)
       })
