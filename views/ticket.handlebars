@@ -14,21 +14,21 @@
           <input type="text" class="font" value="{{nome}}" disabled>
         <label class="font">Telefone:</label>
           <input type="text" class="font telfone" value="{{telefone}}" disabled>
-        <label class="font">Endereço:</label>
+<div>
+          <label class="font">Endereço:</label>
           <input type="text" class="font endereco" value="R. {{rua}} - {{numero}} | {{bairro}} | {{cidade}} - {{uf}} | {{cep}}" disabled>
+</div>
         <hr> 
         <label class="font">Veículo:</label>
           <input type="text" class="font" value="{{marca}} {{modelo}}" disabled>
-        <label class="font">Ano:</label>
-          <input type="text" class="font" value="{{ano}}" disabled>
-        <label class="font">Placa:</label>
-          <input type="text" class="font" value="{{placa}}" disabled>
+        <label class="font">Ano | Placa</label>
+          <input type="text" class="font" value="{{ano}} | {{placa}}" disabled>
         <label class="font">Entrada:</label>
           <input type="text" class="font" value="{{createdAt}}" disabled>
       </section>
     </div>
   <section class="flex-ticket">
-    <div class="data-table">
+    <div class="data-table-2">
       <div class="table-data">
         <form action="/addPeca/{{idTicket}}" method="POST">
           <button>+ Adicionar</button>

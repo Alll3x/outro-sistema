@@ -99,6 +99,13 @@ body{
   margin-left: 25vh;
 }
 
+.data-table-2{
+  border: solid black 2px;
+  border-radius: 5px;
+  padding: 10px;
+  /* margin-left: 25vh; */
+}
+
 .search-img{
   width: 2vh;
   height: 2vh;
@@ -140,7 +147,7 @@ td{
 .flex-header{
   border: 2px solid #000;
   border-radius: 10px;
-  height: 10vh;
+  height: 13vh;
   width: 85%;
 }
 
@@ -209,7 +216,7 @@ padding: 5px;
 .flex-ticket{
   border: solid black 2px;
   border-radius: 10px;
-  width: 156vh;
+  width: 107.5vh;
   height: 70vh;
   margin: 10px;
   display: flex;
@@ -218,8 +225,8 @@ padding: 5px;
 .tickets{
   border: solid black 2px;
   border-radius: 5px;
-  width: 15vh;
-  height: 19vh;
+  width: 15.5vh;
+  height: 21vh;
   margin: 5px;
   text-align: center;
 }
